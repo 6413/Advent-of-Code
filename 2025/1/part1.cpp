@@ -1,5 +1,4 @@
 #include <string>
-#include <fan/utility.h>
 import fan;
 
 int main() {
