@@ -1,28 +1,13 @@
 #include <string>
-
+#include <fan/utility.h>
 import fan;
 
-static constexpr uint8_t mod = 100;
-static constexpr char L = 'L';
-static constexpr char R = 'R';
-
 int main() {
-  std::string data;
-  fan::io::file::read("input.txt", &data);
-
-  std::vector<std::string> lines = fan::io::file::read_line("input.txt");
-  int current = 50;
-  int code = 0;
-  for (auto& line : lines) {
-    int dir = line[0] == L ? -1 : 1;
-    line.erase(0, 1);
-    int v = std::stoi(line);
-    v *= dir;
-    current += v;
-    current %= mod;
-    if (current == 0) {
-      ++code;
-    }
+  int current = 50, code = 0;
+  std::size_t found = 0, i = 0;
+  std::string data = fan::io::file::read("input.txt");
+  while ((found = data.find('\n', i = found + 1)) != std::string::npos) {
+    code += (current += std::stoi(data.substr(i + 1)) * ((data[i] - 79) / 3)) % 100 == 0;
   }
   fan::print(code);
 }
