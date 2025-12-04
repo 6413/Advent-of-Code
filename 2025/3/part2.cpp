@@ -35,10 +35,6 @@ constexpr int cti(char v) {
 }
 
 int main(int argc, char** argv) {
-//  std::string data =R"(987654321111111
-//811111111111119
-//234234234234278
-//818181911112111)";
   std::string data;
   read("input.txt", &data);
   auto lines = split(data, "\n");

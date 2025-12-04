@@ -34,7 +34,7 @@ constexpr int cti(char v) {
 }
 
 int main(int argc, char** argv) {
-  std::string data/* ="7189274928145535324\n987654321111111\n811111111111119\n234234234234278//\n818181911112111"*/;
+  std::string data;
   read("input.txt", &data);
   auto lines = split(data, "\n");
   int64_t count = 0;
