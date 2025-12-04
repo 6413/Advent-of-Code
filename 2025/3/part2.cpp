@@ -45,7 +45,6 @@ int main(int argc, char** argv) {
   int64_t count = 0;
   int n = 12;
   for (auto& line : lines) {
-    int prev_idx = 0;
     std::string::iterator it = line.begin();
     int64_t multiplier = 1000000000000;
     for (int i = 0; i < n; ++i) {
