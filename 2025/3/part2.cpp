@@ -47,8 +47,9 @@ int main(int argc, char** argv) {
   for (auto& line : lines) {
     int prev_idx = 0;
     std::string::iterator it = line.begin();
+    int64_t multiplier = 1000000000000;
     for (int i = 0; i < n; ++i) {
-      count += cti(*(it = std::max_element(it + !!i, line.end() - n + i + !!i))) * std::pow(10, (n - 1) - i);
+      count += cti(*(it = std::max_element(it + !!i, line.end() - n + i + !!i))) * (multiplier *= 0.1);
     }
   }
   printf("%lld\n", count);
