@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
   //  return a.distance < b.distance;
   //});
 
-  std::partial_sort(sorted_connections.begin(), sorted_connections.begin() + 1000, sorted_connections.end(), [](connection_t& a, connection_t& b) {
+  std::sort(sorted_connections.begin(), sorted_connections.end(), [](const connection_t& a, const connection_t& b) {
     return a.distance < b.distance;
   });
 
@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
   std::deque<std::vector<fan::vec3ull>> circuits;
   uint64_t result;
   int i = 0;
-  while (i < 1000) {
+  while (junction_boxes_remaining) {
     const auto& src = sorted_connections[i++];
     {
       // junction boxes already in same circuit
@@ -186,10 +186,10 @@ int main(int argc, char** argv) {
     //}
   }
   //fan::print("circuits:", circuits.size());
-  std::sort(circuits.begin(), circuits.end(), [](auto& a, auto& b) {return a.size() > b.size(); });
+  //std::sort(circuits.begin(), circuits.end(), [](auto& a, auto& b) {return a.size() > b.size(); });
   fan::print("el:", t.elapsed() / 1e6);
  // fan::print("junction boxes remaining:", junction_boxes_remaining);
   fan::print(result);
-  fan::print("multiplication:", circuits[0].size() * circuits[1].size() * circuits[2].size());
+  //fan::print("multiplication:", circuits[0].size() * circuits[1].size() * circuits[2].size());
   engine.loop();
 }
